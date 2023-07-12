@@ -15,7 +15,7 @@ resource "aws_instance" "frontend" {
 
 resource "aws_route53_record" "frontend" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "frontend-test.sreenivasulareddydevops.onlin"
+  name    = "frontend-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.frontend.private_ip]
@@ -32,7 +32,7 @@ resource "aws_instance" "mongodb" {
 
 resource "aws_route53_record" "mongodb" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "mongodb-test.sreenivasulareddydevops.onlin"
+  name    = "mongodb-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.mongodb.private_ip]
@@ -49,7 +49,7 @@ resource "aws_instance" "catalogue" {
 
 resource "aws_route53_record" "catalogue" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "catalogue-test.sreenivasulareddydevops.onlin"
+  name    = "catalogue-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.catalogue.private_ip]
@@ -66,7 +66,7 @@ resource "aws_instance" "redis" {
 
 resource "aws_route53_record" "redis" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "redis-test.sreenivasulareddydevops.onlin"
+  name    = "redis-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.redis.private_ip]
@@ -83,7 +83,7 @@ resource "aws_instance" "user" {
 
 resource "aws_route53_record" "user" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "user-test.sreenivasulareddydevops.onlin"
+  name    = "user-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.user.private_ip]
@@ -100,7 +100,7 @@ resource "aws_instance" "cart" {
 
 resource "aws_route53_record" "cart" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "cart-test.sreenivasulareddydevops.onlin"
+  name    = "cart-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.cart.private_ip]
@@ -117,7 +117,7 @@ resource "aws_instance" "mysql" {
 
 resource "aws_route53_record" "mysql" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "mysql-test.sreenivasulareddydevops.onlin"
+  name    = "mysql-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.mysql.private_ip]
@@ -134,7 +134,7 @@ resource "aws_instance" "shipping" {
 
 resource "aws_route53_record" "shipping" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "shipping-test.sreenivasulareddydevops.onlin"
+  name    = "shipping-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.shipping.private_ip]
@@ -151,7 +151,7 @@ resource "aws_instance" "rabbitmq" {
 
 resource "aws_route53_record" "rabbitmq" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "rabbitmq-test.sreenivasulareddydevops.onlin"
+  name    = "rabbitmq-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.rabbitmq.private_ip]
@@ -168,7 +168,7 @@ resource "aws_instance" "payment" {
 
 resource "aws_route53_record" "payment" {
   zone_id = "Z01796182PXCN3W0FPGMA"
-  name    = "payment-test.sreenivasulareddydevops.onlin"
+  name    = "payment-test.sreenivasulareddydevops.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.payment.private_ip]
