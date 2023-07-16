@@ -26,7 +26,7 @@ resource "null_resource" "provisioner" {
       "rm-rf iRobo-shell",
       "git clone https://github.com/Sreeni002/iRobo-shell.git",
       "cd iRobo-shell",
-      "sudo bash ${each.value["name"]}.sh"
+      "sudo bash ${each.value["name"]}.sh ${ lookup(each.value, "password", "null") }"
     ]
   }
 }
