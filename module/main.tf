@@ -73,7 +73,7 @@ resource "aws_iam_role_policy" "ssm_ps_policy" {
         "Sid": "VisualEditor0",
         "Effect": "Allow",
         "Action": [
-          "kms:Encrypt",
+          "kms:Decrypt",
           "ssm:GetParameterHistory",
           "ssm:GetParametersByPath",
           "ssm:GetParameters",
