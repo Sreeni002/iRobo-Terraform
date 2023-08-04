@@ -32,7 +32,7 @@ module "vpc" {
 #}
 
 module "docdb" {
-  source = "https://github.com/Sreeni002/tf-module-docdb.git"
+  source = "git::https://github.com/Sreeni002/tf-module-docdb.git"
 
   for_each = var.docdb
   subnets = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
