@@ -11,7 +11,7 @@ module "vpc" {
   default_vpc_rtid = var.default_vpc_rtid
 }
 
-module "app" {
+module "web" {
   source = "git::https://github.com/Sreeni002/tf-module-app.git"
 
   for_each = var.app
