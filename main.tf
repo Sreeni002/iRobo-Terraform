@@ -43,6 +43,6 @@ module "docdb" {
 
   tags = local.tags
   env = var.env
-  vpc_id = local.vpc_id
+  vpc_id = var.vpc #made change by me
   kms_arn = var.kms_arn
 }
