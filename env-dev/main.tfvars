@@ -92,3 +92,14 @@ rds = {
     instance_class = "db.t3.small"
   }
 }
+
+elasticache = {
+  main = {
+    subnet_name = "db"
+    allow_db_cidr = "app"
+    engine_version = "6.x"
+    node_type = "cache.t3.micro"
+    num_node_groups = 1
+    replicas_per_node_group = 1
+  }
+}
