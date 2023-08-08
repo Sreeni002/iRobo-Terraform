@@ -4,6 +4,8 @@ default_vpc_id = "vpc-0ddfdfe4ed7442d8c"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtid = "rtb-0a1b804cd10f6ead5"
 kms_arn = "arn:aws:kms:us-east-1:774743844136:key/97f14d48-2686-4713-9aa1-776591b60d52"
+domain_name = "sreenivasulareddydevops.online"
+domain_id   = "Z01796182PXCN3W0FPGMA"
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -42,6 +44,8 @@ app = {
     max_size           = 10
     min_size           = 1
     app_port           = 80
+    listener_priority  = 1
+    lb_type            = "public"
   }
   catalogue = {
     name = "catalogue"
@@ -52,6 +56,8 @@ app = {
     max_size           = 10
     min_size           = 1
     app_port           = 8080
+    listener_priority  = 1
+    lb_type            = "private"
   }
 #  cart = {
 #    name = "cart"
