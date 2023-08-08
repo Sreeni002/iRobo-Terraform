@@ -11,26 +11,6 @@ module "vpc" {
   default_vpc_rtid = var.default_vpc_rtid
 }
 
-#module "app" {
-#  source = "git::https://github.com/Sreeni002/tf-module-app.git"
-#
-#  for_each = var.app
-#  instance_type = each.value["instance_type"]
-#  name = each.value["name"]
-#  desired_capacity = each.value["desired_capacity"]
-#  max_size = each.value["max_size"]
-#  min_size = each.value["min_size"]
-#
-#  env = var.env
-#  bastion_cidr = var.bastion_cidr
-#  tags = local.tags
-#
-#  subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
-#  vpc_id = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#
-#  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_app_cidr"], null), "subnet_cidrs", null)
-#}
-
 module "docdb" {
   source = "git::https://github.com/Sreeni002/tf-module-docdb.git"
 
@@ -100,7 +80,7 @@ module "alb" {
   source = "git::https://github.com/Sreeni002/tf-module-alb.git"
 
   for_each = var.alb
-  subnets       = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnets", null)
+  subnets       = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
   allow_alb_cidr = each.value["name"] == "public" ? ["0.0.0.0/0"] : lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_alb_cidr"], null), "subnet_cidrs", null)
 
   name = each.value["name"]
@@ -111,3 +91,23 @@ module "alb" {
   vpc_id = local.vpc_id
 }
 
+module "app" {
+  depends_on = [module.vpc,module.docdb,module.elasticache,module.rabbitmq,module.rds,module.alb]
+  source = "git::https://github.com/Sreeni002/tf-module-app.git"
+
+  for_each = var.app
+  instance_type = each.value["instance_type"]
+  name = each.value["name"]
+  desired_capacity = each.value["desired_capacity"]
+  max_size = each.value["max_size"]
+  min_size = each.value["min_size"]
+
+  subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
+  vpc_id = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+
+  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_app_cidr"], null), "subnet_cidrs", null)
+
+  env = var.env
+  bastion_cidr = var.bastion_cidr
+  tags = local.tags
+}
