@@ -73,7 +73,7 @@ app = {
     app_port           = 8080
     listener_priority  = 1
     lb_type            = "private"
-    parameters         = []
+#    parameters         = []
   }
   user = {
     name = "user"
@@ -86,7 +86,7 @@ app = {
     app_port           = 8080
     listener_priority  = 1
     lb_type            = "private"
-    parameters         = ["docdb"]
+#    parameters         = ["docdb"]
   }
   shipping = {
     name = "shipping"
@@ -99,7 +99,7 @@ app = {
     app_port           = 8080
     listener_priority  = 1
     lb_type            = "private"
-    parameters         = ["rds"]
+#    parameters         = ["rds"]
   }
   payment = {
     name = "payment"
@@ -112,7 +112,7 @@ app = {
     app_port           = 8080
     listener_priority  = 1
     lb_type            = "private"
-    parameters         = []
+#    parameters         = []
   }
 }
 
