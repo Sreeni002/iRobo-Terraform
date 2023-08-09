@@ -106,8 +106,7 @@ app = {
     instance_type = "t3.small"
     subnet_name = "app"
     allow_app_cidr     = "app"
-    desired_capacity   =
-    1
+    desired_capacity   = 1
     max_size           = 10
     min_size           = 1
     app_port           = 8080
