@@ -123,3 +123,14 @@ module "app" {
   kms_arn = var.kms_arn
   monitor_cidr = var.monitor_cidr
 }
+
+### Load runner
+data "aws_ami" "ami" {
+  most_recent      = true
+  name_regex       = "Centos-8-DevOps-Practice"
+  owners           = ["973714476881"]
+}
+
+resource "aws_instance" "load" {
+  ami = data.aws_ami.ami.id
+}
